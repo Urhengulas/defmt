@@ -1083,7 +1083,15 @@ fn format_args_real(
                                     format_u128(bitfields as u128, hint, &mut buf)?;
                                 }
                             }
-                            _ => format_u128(*x as u128, hint, &mut buf)?,
+                            _ => {
+                                // Use parent hint if missing or Debug
+                                let hint = match hint {
+                                    Some(DisplayHint::Debug) | None => parent_hint,
+                                    Some(_) => hint,
+                                };
+
+                                format_u128(*x as u128, hint, &mut buf)?;
+                            }
                         }
                     }
                     Arg::Ixx(x) => format_i128(*x as i128, hint, &mut buf)?,
@@ -1425,7 +1433,7 @@ mod tests {
     }
 
     #[test]
-    fn display_use_inner_hex_hint() {
+    fn display_use_inner_type_hint() {
         let mut entries = BTreeMap::new();
 
         entries.insert(
