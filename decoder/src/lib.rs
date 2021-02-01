@@ -1454,10 +1454,10 @@ mod tests {
         };
 
         let bytes = [
-            0,   // index
-            2,   // timestamp
-            1,   // index of the struct
-            42,  // value
+            0,  // index
+            2,  // timestamp
+            1,  // index of the struct
+            42, // value
         ];
 
         let frame = super::decode(&bytes, &table).unwrap().0;
@@ -1489,10 +1489,10 @@ mod tests {
         };
 
         let bytes = [
-            0,   // index
-            2,   // timestamp
-            1,   // index of the struct
-            42,  // value
+            0,  // index
+            2,  // timestamp
+            1,  // index of the struct
+            42, // value
         ];
 
         let frame = super::decode(&bytes, &table).unwrap().0;
@@ -1524,10 +1524,10 @@ mod tests {
         };
 
         let bytes = [
-            0,                            // index
-            2,                            // timestamp
-            1,                            // index into the struct
-            5,                            // length of the string
+            0, // index
+            2, // timestamp
+            1, // index into the struct
+            5, // length of the string
             b'H', b'e', b'l', b'l', b'o', // string "Hello"
         ];
         let frame = super::decode(&bytes, &table).unwrap().0;
