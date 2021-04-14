@@ -6,6 +6,9 @@ In case of nesting any inner take attempt will silently fail.
 So the log macros may expand to something like this:
 (let's ignore data races / race conditions for now)
 
+
+
+
 ``` rust
 # struct Logger;
 # impl Logger {
